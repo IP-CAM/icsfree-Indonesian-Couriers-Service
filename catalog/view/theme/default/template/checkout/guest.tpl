@@ -517,12 +517,12 @@ $('#collapse-payment-address select[name=\'country_id\']').trigger('change');
 //--></script>
 <!--frd-->
 <script type="text/javascript"><!--
-$('select[name=\'zone_id\']').on('change', function() {
+$('#collapse-payment-address select[name=\'zone_id\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=account/account/zone&zone_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
-			$('select[name=\'zone_id\']').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');
+			$('#collapse-payment-address select[name=\'zone_id\']').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');
 		},
 		complete: function() {
 			$('.fa-spin').remove();
@@ -546,7 +546,7 @@ $('select[name=\'zone_id\']').on('change', function() {
 				/*html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';*/
 			}
 
-			$('select[name=\'district_id\']').html(html);
+			$('#collapse-payment-address select[name=\'district_id\']').html(html);
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -554,5 +554,5 @@ $('select[name=\'zone_id\']').on('change', function() {
 	});
 });
 
-$('select[name=\'zone_id\']').trigger('change');
+$('#collapse-payment-address select[name=\'zone_id\']').trigger('change');
 //--></script>

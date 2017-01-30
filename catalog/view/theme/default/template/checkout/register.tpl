@@ -190,15 +190,16 @@
           <option value="<?php echo $zone_id; ?>"></option>
           <?php } ?>
           <!---frd-->
-          
+
         </select>
       </div>
+      <!--frd-->
       <div class="form-group required">
         <label class="control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
         <select name="district_id" id="input-payment-district" class="form-control">
         </select>
       </div>
-
+      <!---->
       <?php foreach ($custom_fields as $custom_field) { ?>
       <?php if ($custom_field['location'] == 'address') { ?>
       <?php if ($custom_field['type'] == 'select') { ?>
