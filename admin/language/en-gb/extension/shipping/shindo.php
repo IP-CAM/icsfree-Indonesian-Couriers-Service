@@ -35,7 +35,11 @@ $_['entry_sort_order'] = 'Sort Order';
 // Help
 
 $_['help_handling']        = 'Input Handling Fee in Rupiahs';
-$_['help_weight_class']        = 'Choose gram for JNE, POS and TIKI';
+$_['help_weight_class']        = 'Choose gram for JNE and TIKI';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify weight based shipping!';
+
+$_['error_province_id']                = 'Province required!';
+$_['error_city_id']                    = 'City required!';
+$_['error_apikey']                     = 'Api Key required!';

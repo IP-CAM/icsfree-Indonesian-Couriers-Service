@@ -109,7 +109,7 @@
           </div>
 
           <!--frd-->
-          <div class="form-group required">
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-district"><?php echo $entry_district; ?></label>
             <div class="col-sm-10">
               <select name="district_id" id="input-district" class="form-control">

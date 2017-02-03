@@ -8,7 +8,7 @@
 		<operation error="skip">
 			<search><![CDATA[$this->response->setOutput(json_encode($json));]]></search>
 			<add position="after" offset="1"><![CDATA[
-        //frd
+        //frd 1
       	public function zone() {
       		$json = array();
       		$this->load->model('localisation/zone');
@@ -39,35 +39,35 @@
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district'); //frd
+        $data['entry_district'] = $this->language->get('entry_district'); //frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$data['payment_zone_id'] = $order_info['payment_zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $data['payment_district_id'] = $order_info['payment_district_id']; //frd
+        $data['payment_district_id'] = $order_info['payment_district_id']; //frd 2
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$data['shipping_zone_id'] = $order_info['shipping_zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $data['shipping_district_id'] = $order_info['shipping_district_id']; //frd
+        $data['shipping_district_id'] = $order_info['shipping_district_id']; //frd 3
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$data['payment_zone_id'] = '';]]></search>
       <add position="after"><![CDATA[
-        $data['payment_district_id'] = ''; //frd
+        $data['payment_district_id'] = ''; //frd 4
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$data['shipping_zone_id'] = '';]]></search>
       <add position="after"><![CDATA[
-        $data['shipping_district_id'] = ''; //frd
+        $data['shipping_district_id'] = ''; //frd 5
       ]]>
       </add>
     </operation>
@@ -76,7 +76,7 @@
     <operation error="skip">
       <search><![CDATA[$_['entry_zone']]]></search>
       <add position="after"><![CDATA[
-        $_['entry_district']           = 'District / City'; //frd
+        $_['entry_district']           = 'District / City'; //frd 1
       ]]>
       </add>
     </operation>
@@ -85,26 +85,29 @@
     <operation error="skip">
       <search><![CDATA[$_['entry_zone']]]></search>
       <add position="after"><![CDATA[
-        $_['entry_district']           = 'Kabupaten / Kota'; //frd
+        $_['entry_district']           = 'Kabupaten / Kota'; //frd 1
       ]]>
       </add>
     </operation>
   </file>
-
   <file path="admin/model/sale/order.php">
     <operation error="skip">
       <search><![CDATA[$order_query->row['payment_zone'],]]></search>
       <add position="after"><![CDATA[
-        'payment_district_id'     => $order_query->row['payment_district_id'], //frd
-				'payment_district'        => $order_query->row['payment_district'], //frd
+        //frd 1
+        'payment_district_id'     => $order_query->row['payment_district_id'],
+				'payment_district'        => $order_query->row['payment_district'],
+        //---
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_query->row['shipping_zone'],]]></search>
       <add position="after"><![CDATA[
-        'shipping_district_id'    => $order_query->row['shipping_district_id'], //frd
-				'shipping_district'       => $order_query->row['shipping_district'],//frd
+        //frd 2
+        'shipping_district_id'    => $order_query->row['shipping_district_id'],
+				'shipping_district'       => $order_query->row['shipping_district'],
+        //---
       ]]>
       </add>
     </operation>
@@ -113,7 +116,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-payment-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!--frd-->
+        <!--frd 1-->
         <?php if (!empty($payment_zone_id)) {?>
         <option value="<?php echo $payment_zone_id; ?>"></option>
         <?php } ?>
@@ -124,8 +127,8 @@
     <operation error="skip">
       <search index="1"><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-          <!--frd-->
-          <div class="form-group required">
+          <!--frd 2-->
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
             <div class="col-sm-10">
               <select name="district_id" id="input-payment-district" class="form-control">
@@ -142,7 +145,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-shipping-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <?php if (!empty($shipping_zone_id)) {?>
         <option value="<?php echo $shipping_zone_id; ?>"></option>
         <?php } ?>
@@ -153,8 +156,8 @@
     <operation error="skip">
       <search index="2"><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 4-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-shipping-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-shipping-district" class="form-control">
@@ -168,7 +171,7 @@
     <operation error="skip">
       <search index="1"><![CDATA[<script type="text/javascript">]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
+        <!--frd 5-->
         <script type="text/javascript"><!--
         $('#tab-payment select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -261,7 +264,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 1
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -276,7 +279,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 2
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -291,14 +294,14 @@
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 3
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[if (isset($this->error['custom_field'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 4
     		if (isset($this->error['district'])) {
     			$data['error_district'] = $this->error['district'];
     		} else {
@@ -312,7 +315,7 @@
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 5
     		if (isset($this->request->post['district_id'])) {
     			$data['district_id'] = (int)$this->request->post['district_id'];
     		}  elseif (!empty($address_info)) {
@@ -324,13 +327,25 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->error['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 6
+    		if ($this->request->post['country_id'] == 100) {
+    			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+    				$this->error['district'] = $this->language->get('error_district');
+    			}
+    		}
+    		//------
+        ]]>
+      </add>
+    </operation>
   </file>
-
   <file path="catalog/controller/account/account.php">
     <operation error="skip">
       <search><![CDATA[$this->response->setOutput(json_encode($json));]]></search>
       <add position="after" offset="1"><![CDATA[
-        //frd
+        //frd 1
         public function zone() {
           $json = array();
 
@@ -363,14 +378,14 @@
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[if (isset($this->error['custom_field'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
     		if (isset($this->error['district'])) {
     			$data['error_district'] = $this->error['district'];
     		} else {
@@ -383,7 +398,7 @@
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 3
     		if (isset($this->request->post['district_id'])) {
     			$data['district_id'] = (int)$this->request->post['district_id'];
     		} elseif (isset($this->session->data['shipping_address']['district_id'])) {
@@ -395,12 +410,27 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$this->error['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 4
+    		if ($this->request->post['country_id'] == 100) {
+    			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+    				$this->error['district'] = $this->language->get('error_district');
+    			}
+    		}
+    		//------
+
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/controller/account/login.php">
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 1
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -416,7 +446,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 2
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -428,13 +458,26 @@
       ]]>
       </add>
     </operation>
-  </file>
+    <operation error="skip">
+      <search><![CDATA[$this->error['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 3
+    		if ($this->request->post['country_id'] == 100) {
+    			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+    				$this->error['district'] = $this->language->get('error_district');
+    			}
+    		}
+    		//------
 
+      ]]>
+      </add>
+    </operation>
+  </file>
   <file path="catalog/controller/checkout/shipping_method.php">
     <operation error="skip">
       <search><![CDATA[$results = $this->model_extension_extension->getExtensions('shipping');]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 1
   			if ($this->config->get('shindo_status')==true) {
   				$results[] = array('code'=>'igstiki');
   				$results[] = array('code'=>'igsjne');
@@ -453,14 +496,14 @@
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district'); //frd
+        $data['entry_district'] = $this->language->get('entry_district'); //frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
     		if (isset($this->session->data['payment_address']['district_id'])) {
     			$data['district_id'] =  $this->session->data['payment_address']['district_id'];
     		} else {
@@ -473,7 +516,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 3
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -488,7 +531,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 4
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -501,19 +544,33 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 5
+				if ($this->request->post['country_id'] == 100) {
+					if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+						$json['error']['district'] = $this->language->get('error_district');
+					}
+				}
+				//------
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/controller/checkout/shipping_address.php">
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
     		if (isset($this->session->data['shipping_address']['district_id'])) {
     			$data['district_id'] =  $this->session->data['shipping_address']['district_id'];
     		} else {
@@ -526,7 +583,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 3
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -542,7 +599,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 4
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -554,19 +611,33 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 5
+				if ($this->request->post['country_id'] == 100) {
+					if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+						$json['error']['district'] = $this->language->get('error_district');
+					}
+				}
+
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/controller/checkout/guest.php">
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
     		if (isset($this->session->data['payment_address']['district_id'])) {
     			$data['district_id'] = $this->session->data['payment_address']['district_id'];
     		} elseif (isset($this->session->data['shipping_address']['district_id'])) {
@@ -582,7 +653,7 @@
     <operation error="skip">
       <search><![CDATA[// Customer Group]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 3
   			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
   				$json['error']['district'] = $this->language->get('error_district');
   			}
@@ -593,7 +664,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address']['zone_id'] = $this->request->post['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 4
   			$this->session->data['payment_address']['district_id'] = $this->request->post['district_id'];
   			//----
       ]]>
@@ -602,7 +673,7 @@
     <operation error="skip">
       <search><![CDATA[if (!empty($this->request->post['shipping_address'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 5
   			$this->load->model('localisation/district');
   			$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
   			if (isset($district['rajaongkir']['results']['city_name'])){
@@ -618,7 +689,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address']['zone_id'] = $this->request->post['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 6
 				$this->session->data['shipping_address']['district_id'] = $this->request->post['district_id'];
 				//---
       ]]>
@@ -627,7 +698,7 @@
     <operation error="skip">
       <search index="1"><![CDATA[if (isset($this->request->post['custom_field']['address'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 7
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -639,19 +710,32 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['zone'] = $this->language->get('error_zone');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 8
+  			if ($this->request->post['country_id'] == 100) {
+  				if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+  					$json['error']['district'] = $this->language->get('error_district');
+  				}
+  			}
+  			//------
+      ]]>
+      </add>
+    </operation>
   </file>
   <file path="catalog/controller/checkout/guest_shipping.php">
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search index="0"><![CDATA[$this->load->model('localisation/country');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
     		if (isset($this->session->data['shipping_address']['district_id'])) {
     			$data['district_id'] = $this->session->data['shipping_address']['district_id'];
     		} else {
@@ -665,7 +749,7 @@
     <operation error="skip">
       <search><![CDATA[// Custom field validation]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 3
   			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
   				$json['error']['district'] = $this->language->get('error_district');
   			}
@@ -676,14 +760,14 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['shipping_address']['zone_id'] = $this->request->post['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $this->session->data['shipping_address']['district_id'] = $this->request->post['district_id'];//frd
+        $this->session->data['shipping_address']['district_id'] = $this->request->post['district_id'];//frd 4
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[if (isset($this->request->post['custom_field'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 5
   			$this->load->model('localisation/district');
   			$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
   			if (isset($district['rajaongkir']['results']['city_name'])){
@@ -696,30 +780,43 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 6
+  			if ($this->request->post['country_id'] == 100) {
+  				if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+  					$json['error']['district'] = $this->language->get('error_district');
+  				}
+  			}
+  			//------
+      ]]>
+      </add>
+    </operation>
 
   </file>
   <file path="catalog/controller/checkout/confirm.php">
     <operation error="skip">
       <search><![CDATA[$order_data['payment_zone_id'] = $this->session->data['payment_address']['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $order_data['payment_district'] = $this->session->data['payment_address']['district'];//frd
-  			$order_data['payment_district_id'] = $this->session->data['payment_address']['district_id'];//frd
+        $order_data['payment_district'] = $this->session->data['payment_address']['district'];//frd 1
+  			$order_data['payment_district_id'] = $this->session->data['payment_address']['district_id'];//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_data['shipping_zone_id'] = $this->session->data['shipping_address']['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $order_data['shipping_district'] = $this->session->data['shipping_address']['district'];//frd
-				$order_data['shipping_district_id'] = $this->session->data['shipping_address']['district_id'];//frd
+        $order_data['shipping_district'] = $this->session->data['shipping_address']['district'];//frd 2
+				$order_data['shipping_district_id'] = $this->session->data['shipping_address']['district_id'];//frd 2
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_data['shipping_zone_id'] = '';]]></search>
       <add position="after"><![CDATA[
-        $order_data['shipping_district'] = '';//frd
-				$order_data['shipping_district_id'] = '';//frd
+        $order_data['shipping_district'] = '';//frd 3
+				$order_data['shipping_district_id'] = '';//frd 3
       ]]>
       </add>
     </operation>
@@ -728,7 +825,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 1
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -743,7 +840,7 @@
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 2
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -761,14 +858,14 @@
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district'); //frd
+        $data['entry_district'] = $this->language->get('entry_district'); //frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 2
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -784,7 +881,7 @@
       <search><![CDATA[$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());]]></search>
       <add position="after"><![CDATA[
         $this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
-        //frd
+        //frd 3
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -796,19 +893,32 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 4
+  			if ($this->request->post['country_id'] == 100) {
+  				if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+  					$json['error']['district'] = $this->language->get('error_district');
+  				}
+  			}
+  			//------
+      ]]>
+      </add>
+    </operation>
   </file>
   <file path="catalog/controller/extension/total/shipping.php">
     <operation error="skip">
       <search><![CDATA[$data['entry_zone'] = $this->language->get('entry_zone');]]></search>
       <add position="after"><![CDATA[
-        $data['entry_district'] = $this->language->get('entry_district');//frd
+        $data['entry_district'] = $this->language->get('entry_district');//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[if (isset($this->session->data['shipping_address']['postcode'])) {]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
   			if (isset($this->session->data['shipping_address']['district_id'])) {
   				$data['district_id'] =  $this->session->data['shipping_address']['district_id'];
   			} else {
@@ -822,14 +932,14 @@
     <operation error="skip">
       <search><![CDATA[$this->request->post['zone_id'],]]></search>
       <add position="after"><![CDATA[
-        'district_id'    => $this->request->post['district_id'],//frd
+        'district_id'    => $this->request->post['district_id'],//frd 3
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$quote_data = array();]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 4
   			$this->load->model('localisation/district');
   			$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
   			if (isset($district['rajaongkir']['results']['city_name'])){
@@ -845,7 +955,7 @@
     <operation error="skip">
       <search><![CDATA[$results = $this->model_extension_extension->getExtensions('shipping');]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 5
   			if ($this->config->get('shindo_status')==true) {
   				$results[] = array('code'=>'igstiki');
   				$results[] = array('code'=>'igsjne');
@@ -860,30 +970,42 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 6
+    		if ($this->request->post['country_id'] == 100) {
+    			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+    				$json['error']['district'] = $this->language->get('error_district');
+    			}
+    		}
 
+      ]]>
+      </add>
+    </operation>
   </file>
   <file path="catalog/controller/api/order.php">
     <operation error="skip">
       <search><![CDATA[$order_data['payment_zone_id'] = $this->session->data['payment_address']['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $order_data['payment_district'] = $this->session->data['payment_address']['district'];//frd
-				$order_data['payment_district_id'] = $this->session->data['payment_address']['district_id'];//frd
+        $order_data['payment_district'] = $this->session->data['payment_address']['district'];//frd 1
+				$order_data['payment_district_id'] = $this->session->data['payment_address']['district_id'];//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_data['shipping_zone_id'] = $this->session->data['shipping_address']['zone_id'];]]></search>
       <add position="after"><![CDATA[
-        $order_data['shipping_district'] = $this->session->data['shipping_address']['district'];//frd
-        $order_data['shipping_district_id'] = $this->session->data['shipping_address']['district_id'];//frd
+        $order_data['shipping_district'] = $this->session->data['shipping_address']['district'];//frd 2
+        $order_data['shipping_district_id'] = $this->session->data['shipping_address']['district_id'];//frd 2
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_data['shipping_zone_id'] = '';]]></search>
       <add position="after"><![CDATA[
-        $order_data['shipping_district'] = '';//frd
-        $order_data['shipping_district_id'] = '';//frd
+        $order_data['shipping_district'] = '';//frd 3
+        $order_data['shipping_district_id'] = '';//frd 3
       ]]>
       </add>
     </operation>
@@ -892,14 +1014,14 @@
     <operation error="skip">
       <search><![CDATA[$zone,]]></search>
       <add position="after"><![CDATA[
-        'district_id'    => $this->request->post['district_id'], //frd
+        'district_id'    => $this->request->post['district_id'], //frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$json['success'] = $this->language->get('text_address');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
 				$this->load->model('localisation/district');
 				$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
 				if (isset($district['rajaongkir']['results']['city_name'])){
@@ -908,23 +1030,36 @@
 					$this->session->data['payment_address']['district'] = '';
 				}
 				//---
-
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 3
+  			if ($this->request->post['country_id'] == 100) {
+  				if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+  					$json['error']['district'] = $this->language->get('error_district');
+  				}
+  			}
+  			//---
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/controller/api/shipping.php">
     <operation error="skip">
       <search><![CDATA[$zone,]]></search>
       <add position="after"><![CDATA[
-        'district_id'    => $this->request->post['district_id'],//frd
+        'district_id'    => $this->request->post['district_id'],//frd 1
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$json['success'] = $this->language->get('text_address');]]></search>
       <add position="before"><![CDATA[
-        //frd
+        //frd 2
         $this->load->model('localisation/district');
         $district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
         if (isset($district['rajaongkir']['results']['city_name'])){
@@ -940,7 +1075,7 @@
     <operation error="skip">
       <search><![CDATA[$results = $this->model_extension_extension->getExtensions('shipping');]]></search>
       <add position="after"><![CDATA[
-        //frd
+        //frd 3
         if ($this->config->get('shindo_status')==true) {
   				$results[] = array('code'=>'igstiki');
   				$results[] = array('code'=>'igsjne');
@@ -954,22 +1089,35 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[$json['error']['country'] = $this->language->get('error_country');]]></search>
+      <add position="after" offset="1"><![CDATA[
+        //frd 4
+				if ($this->request->post['country_id'] == 100) {
+					if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+						$json['error']['district'] = $this->language->get('error_district');
+					}
+				}
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/model/account/address.php">
     <operation error="skip">
       <search position="replace" trim="true"><![CDATA[$this->db->query("INSERT INTO " . DB_PREFIX . "address SET]]></search>
-      <add><![CDATA[/*frd*/$this->db->query("INSERT INTO " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
+      <add><![CDATA[/*frd 1*/$this->db->query("INSERT INTO " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
       </add>
     </operation>
     <operation error="skip">
       <search position="replace" trim="true"><![CDATA[$this->db->query("UPDATE " . DB_PREFIX . "address SET]]></search>
-      <add><![CDATA[/*frd*/$this->db->query("UPDATE " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
+      <add><![CDATA[/*frd 2*/$this->db->query("UPDATE " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[json_decode($address_query->row['custom_field'], true)]]></search>
       <add position="after"><![CDATA[
-        ,'district_id'     => $address_query->row['district_id'],//frd
+        ,'district_id'     => $address_query->row['district_id'],//frd 3
       ]]>
       </add>
     </operation>
@@ -977,34 +1125,34 @@
   <file path="catalog/model/account/customer.php">
     <operation error="skip">
       <search position="replace" trim="true"><![CDATA[$this->db->query("INSERT INTO " . DB_PREFIX . "address SET]]></search>
-      <add><![CDATA[/*frd*/$this->db->query("INSERT INTO " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
+      <add><![CDATA[/*frd 1*/$this->db->query("INSERT INTO " . DB_PREFIX . "address SET district_id ='" . (int)$this->db->escape($data['district_id']) . "', ]]>
       </add>
     </operation>
   </file>
   <file path="catalog/model/checkout/order.php">
     <operation error="skip">
       <search position="replace" trim="true"><![CDATA[$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET]]></search>
-      <add><![CDATA[/*frd*/$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET payment_district = '" . $this->db->escape($data['payment_district']) . "', payment_district_id = '" .  (int)$data['payment_district_id'] . "', shipping_district = '" . $this->db->escape($data['shipping_district']) . "', shipping_district_id = '" . (int)$data['shipping_district_id'] . "', ]]>
+      <add><![CDATA[/*frd 1*/$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET payment_district = '" . $this->db->escape($data['payment_district']) . "', payment_district_id = '" .  (int)$data['payment_district_id'] . "', shipping_district = '" . $this->db->escape($data['shipping_district']) . "', shipping_district_id = '" . (int)$data['shipping_district_id'] . "', ]]>
       </add>
     </operation>
     <operation error="skip">
       <search position="replace" trim="true"><![CDATA[$this->db->query("UPDATE `" . DB_PREFIX . "order` SET invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "',]]></search>
-      <add><![CDATA[/*frd*/$this->db->query("UPDATE `" . DB_PREFIX . "order` SET invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "', payment_district = '" . $this->db->escape($data['payment_district']) . "', payment_district_id = '" . (int)$data['payment_district_id'] . "', shipping_district = '" . $this->db->escape($data['shipping_district']) . "', shipping_district_id = '" . (int)$data['shipping_district_id'] . "', ]]>
+      <add><![CDATA[/*frd 2*/$this->db->query("UPDATE `" . DB_PREFIX . "order` SET invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "', payment_district = '" . $this->db->escape($data['payment_district']) . "', payment_district_id = '" . (int)$data['payment_district_id'] . "', shipping_district = '" . $this->db->escape($data['shipping_district']) . "', shipping_district_id = '" . (int)$data['shipping_district_id'] . "', ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_query->row['payment_zone'],]]></search>
       <add position="after"><![CDATA[
-        'payment_district_id'     => $order_query->row['payment_district_id'], //frd
-				'payment_district'        => $order_query->row['payment_district'], //frd
+        'payment_district_id'     => $order_query->row['payment_district_id'], //frd 3
+				'payment_district'        => $order_query->row['payment_district'], //frd 3
       ]]>
       </add>
     </operation>
     <operation error="skip">
       <search><![CDATA[$order_query->row['shipping_zone'],]]></search>
       <add position="after"><![CDATA[
-        'shipping_district_id'    => $order_query->row['shipping_district_id'],//frd
-				'shipping_district'       => $order_query->row['shipping_district'], //frd
+        'shipping_district_id'    => $order_query->row['shipping_district_id'],//frd 4
+				'shipping_district'       => $order_query->row['shipping_district'], //frd 4
       ]]>
       </add>
     </operation>
@@ -1013,7 +1161,16 @@
     <operation error="skip">
       <search><![CDATA[$_['entry_zone']]]></search>
       <add position="after"><![CDATA[
-        $_['entry_district']           = 'District / City'; //frd
+        $_['entry_district']           = 'District / City'; //frd 1
+      ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/id-id/account/{address,register}.php">
+    <operation error="skip">
+      <search><![CDATA[$_['entry_zone']]]></search>
+      <add position="after"><![CDATA[
+        $_['entry_district']           = 'Kabupaten / Kota'; //frd 1
       ]]>
       </add>
     </operation>
@@ -1022,8 +1179,19 @@
     <operation error="skip">
       <search><![CDATA[$_['entry_zone']]]></search>
       <add position="after"><![CDATA[
-        $_['entry_district']           = 'District / City'; //frd
+        $_['entry_district']           = 'District / City'; //frd 1
+        $_['error_district']               = 'Warning: District required';//frd 1
       ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/id-id/checkout/checkout.php">
+    <operation error="skip">
+      <search><![CDATA[$_['entry_zone']]]></search>
+      <add position="after"><![CDATA[
+        $_['entry_district']           = 'Kabupaten / Kota'; //frd 1
+        $_['error_district']           = 'Warning: Kabupaten harus diisi';//frd 1
+    ]]>
       </add>
     </operation>
   </file>
@@ -1031,8 +1199,55 @@
     <operation error="skip">
       <search><![CDATA[$_['entry_zone']]]></search>
       <add position="after"><![CDATA[
-        $_['entry_district']           = 'District / City'; //frd
+        $_['entry_district']           = 'District / City'; //frd 1
+        $_['error_district']               = 'Warning: District required';//frd 1
+    ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/id-id/extension/total/shipping.php">
+    <operation error="skip">
+      <search><![CDATA[$_['entry_zone']]]></search>
+      <add position="after"><![CDATA[
+        $_['entry_district']           = 'Kabupaten / Kota'; //frd 1
+        $_['error_district']           = 'Warning: Kabupaten harus diisi';//frd 1
       ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/en-gb/api/payment.php">
+    <operation error="skip">
+      <search><![CDATA[$_['error_no_payment']]]></search>
+      <add position="after"><![CDATA[
+        $_['error_district']     = 'Warning: District required!'; //frd 1
+        ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/id-id/api/payment.php">
+    <operation error="skip">
+      <search><![CDATA[$_['error_no_payment']]]></search>
+      <add position="after"><![CDATA[
+        $_['error_district']     = 'Warning: Kabupaten harus diisi!'; //frd 1
+        ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/en-gb/api/shipping.php">
+    <operation error="skip">
+      <search><![CDATA[$_['error_no_shipping']]]></search>
+      <add position="after"><![CDATA[
+        $_['error_district']     = 'Warning: District required!'; //frd 1
+        ]]>
+      </add>
+    </operation>
+  </file>
+  <file path="catalog/language/id-id/api/shipping.php">
+    <operation error="skip">
+      <search><![CDATA[$_['error_no_shipping']]]></search>
+      <add position="after"><![CDATA[
+        $_['error_district']     = 'Warning: Kabupaten harus diisi!'; //frd 1
+        ]]>
       </add>
     </operation>
   </file>
@@ -1040,7 +1255,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!--frd-->
+        <!--frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1051,8 +1266,8 @@
     <operation error="skip">
       <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-district" class="form-control">
@@ -1070,7 +1285,7 @@
     <operation error="skip">
       <search><![CDATA[<?php echo $footer; ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1120,7 +1335,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1131,8 +1346,8 @@
     <operation error="skip">
       <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-district" class="form-control">
@@ -1149,7 +1364,7 @@
     <operation error="skip">
       <search><![CDATA[<?php echo $footer; ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1198,7 +1413,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1209,8 +1424,8 @@
     <operation error="skip">
       <search><![CDATA[<label class="col-sm-2 control-label" for="input-postcode"><?php echo $entry_postcode; ?></label>]]></search>
       <add position="before" offset="1"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-district" class="form-control">
@@ -1230,7 +1445,7 @@
     <operation error="skip">
       <search><![CDATA[data: 'country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val() + '&postcode=' + encodeURIComponent($('input[name=\'postcode\']').val()),]]></search>
       <add position="replace"><![CDATA[
-        /*frd*/
+        /*frd 3*/
         data: 'country_id=' + $('select[name=\'country_id\']').val() + '&zone_id=' + $('select[name=\'zone_id\']').val() + '&postcode=' + encodeURIComponent($('input[name=\'postcode\']').val()) + '&district_id=' + $('select[name=\'district_id\']').val(),
       ]]>
       </add>
@@ -1238,7 +1453,7 @@
     <operation error="skip">
       <search><![CDATA[html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';]]></search>
       <add position="replace"><![CDATA[
-        /*frd*/
+        /*frd 4*/
         if(typeof(json['shipping_method'][i]['quote'][j]['etd']) != "undefined" && json['shipping_method'][i]['quote'][j]['etd'] !== null) {
           html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '<p style="font-size:85%;">Est: ' + json['shipping_method'][i]['quote'][j]['etd'] + '</p>' + '</label></div>';
         } else {
@@ -1251,7 +1466,7 @@
     <operation error="skip">
       <search><![CDATA[$('select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 5-->
         <script type="text/javascript"><!--
         $('select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1295,12 +1510,24 @@
       ]]>
       </add>
     </operation>
+    <operation error="skip">
+      <search><![CDATA[if (json['error']['postcode']) {]]></search>
+      <add position="before"><![CDATA[
+        /*frd 6*/
+        if (json['error']['district']) {
+					$('select[name=\'district_id\']').after('<div class="text-danger">' + json['error']['district'] + '</div>');
+				}
+        /*--*/
+      ]]>
+      </add>
+    </operation>
+
   </file>
   <file path="catalog/view/theme/default/template/checkout/payment_address.tpl">
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-payment-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1311,8 +1538,8 @@
     <operation error="skip">
       <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-payment-district" class="form-control">
@@ -1333,7 +1560,7 @@
     <operation error="skip">
       <search><![CDATA[$('#collapse-payment-address select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('#collapse-payment-address select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1382,7 +1609,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-shipping-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1393,8 +1620,8 @@
     <operation error="skip">
       <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-shipping-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-shipping-district" class="form-control">
@@ -1414,7 +1641,7 @@
     <operation error="skip">
       <search><![CDATA[$('#collapse-shipping-address select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('#collapse-shipping-address select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1463,7 +1690,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-shipping-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1474,8 +1701,8 @@
     <operation error="skip">
       <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-shipping-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-shipping-district" class="form-control">
@@ -1492,7 +1719,7 @@
     <operation error="skip">
       <search><![CDATA[$('#collapse-shipping-address select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('#collapse-shipping-address select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1542,7 +1769,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-payment-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-        <!---frd-->
+        <!---frd 1-->
         <?php if (!empty($zone_id)) {?>
         <option value="<?php echo $zone_id; ?>"></option>
         <?php } ?>
@@ -1552,11 +1779,11 @@
       </add>
     </operation>
     <operation error="skip">
-      <search><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
+      <search index="1"><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
-          <label class="control-label" for="input-payment-zone"><?php echo $entry_district; ?></label>
+        <!--frd 2-->
+        <div class="form-group">
+          <label class="control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
           <select name="district_id" id="input-payment-district" class="form-control">
           </select>
           <!--<?php if ($error_district) { ?>
@@ -1570,7 +1797,7 @@
     <operation error="skip">
       <search><![CDATA[$('#collapse-payment-address select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('#collapse-payment-address select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1620,7 +1847,7 @@
     <operation error="skip">
       <search><![CDATA[<?php echo $quote['title']; ?> - <?php echo $quote['text']; ?></label>]]></search>
       <add position="replace"><![CDATA[
-        <!--frd-->
+        <!--frd 1-->
         <?php echo $quote['title']; ?> - <?php echo $quote['text']; ?><p style="font-size:85%;"><?php echo isset($quote['etd']) ?  'Est: ' . $quote['etd'] : ''; ?></p></label>
         <!---->
       ]]>
@@ -1631,7 +1858,7 @@
     <operation error="skip">
       <search><![CDATA[<select name="zone_id" id="input-payment-zone" class="form-control">]]></search>
       <add position="after"><![CDATA[
-          <!---frd-->
+          <!---frd 1-->
           <?php if (!empty($zone_id)) {?>
           <option value="<?php echo $zone_id; ?>"></option>
           <?php } ?>
@@ -1642,8 +1869,8 @@
     <operation error="skip">
       <search index="1"><![CDATA[<?php foreach ($custom_fields as $custom_field) { ?>]]></search>
       <add position="before"><![CDATA[
-        <!--frd-->
-        <div class="form-group required">
+        <!--frd 2-->
+        <div class="form-group">
           <label class="control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
           <select name="district_id" id="input-payment-district" class="form-control">
           </select>
@@ -1655,7 +1882,7 @@
     <operation error="skip">
       <search><![CDATA[$('#collapse-payment-address select[name=\'country_id\']').trigger('change');]]></search>
       <add position="after" offset="1"><![CDATA[
-        <!--frd-->
+        <!--frd 3-->
         <script type="text/javascript"><!--
         $('#collapse-payment-address select[name=\'zone_id\']').on('change', function() {
         	$.ajax({
@@ -1699,5 +1926,4 @@
       </add>
     </operation>
   </file>
-
 </modification>

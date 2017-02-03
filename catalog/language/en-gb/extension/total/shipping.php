@@ -12,6 +12,7 @@ $_['entry_country']        = 'Country';
 $_['entry_zone']           = 'Region / State';
 $_['entry_postcode']       = 'Post Code';
 $_['entry_district']       = 'District / City'; //frd
+$_['error_district']       = 'Warning: District required!'; //frd
 
 // Error
 $_['error_postcode']       = 'Postcode must be between 2 and 10 characters!';

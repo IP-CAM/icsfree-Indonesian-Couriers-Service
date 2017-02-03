@@ -52,10 +52,13 @@
                       </select>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-apikey"><?php echo $entry_apikey; ?></label>
                     <div class="col-sm-10">
                         <input type="text" name="shindo_apikey" value="<?php echo $shindo_apikey; ?>" placeholder="<?php echo $entry_apikey; ?>" id="input-apikey" class="form-control" />
+                        <?php if ($error_apikey) { ?>
+                        <div class="text-danger"><?php echo $error_apikey; ?></div>
+                        <?php } ?>
                     </div>
                   </div>
                   <div class="form-group required">
@@ -71,6 +74,9 @@
                         <?php } ?>
                         <?php } ?>
                       </select>
+                      <?php if ($error_province_id) { ?>
+                      <div class="text-danger"><?php echo $error_province_id; ?></div>
+                      <?php } ?>
                     </div>
                 </div>
                 <div class="form-group required">
@@ -78,6 +84,9 @@
                   <div class="col-sm-10">
                     <select name="shindo_city_id" id="input-city" class="form-control">
                     </select>
+                    <?php if ($error_city_id) { ?>
+                    <div class="text-danger"><?php echo $error_city_id; ?></div>
+                    <?php } ?>
                   </div>
                 </div>
 

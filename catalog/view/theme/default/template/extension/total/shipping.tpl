@@ -34,7 +34,7 @@
           </div>
         </div>
         <!--frd-->
-        <div class="form-group required">
+        <div class="form-group">
           <label class="col-sm-2 control-label" for="input-district"><?php echo $entry_district; ?></label>
           <div class="col-sm-10">
             <select name="district_id" id="input-district" class="form-control">
@@ -42,9 +42,6 @@
               <option value="<?php echo $district_id; ?>"></option>
               <?php } ?>
             </select>
-            <!--<?php if ($error_district) { ?>
-            <div class="text-danger"><?php echo $error_district; ?></div>
-            <?php } ?>-->
           </div>
         </div>
         <!---->
@@ -90,10 +87,16 @@ $('#button-quote').on('click', function() {
 				if (json['error']['zone']) {
 					$('select[name=\'zone_id\']').after('<div class="text-danger">' + json['error']['zone'] + '</div>');
 				}
+        /*frd*/
+        if (json['error']['district']) {
+					$('select[name=\'district_id\']').after('<div class="text-danger">' + json['error']['district'] + '</div>');
+				}
+        /*--*/
 
 				if (json['error']['postcode']) {
 					$('input[name=\'postcode\']').after('<div class="text-danger">' + json['error']['postcode'] + '</div>');
 				}
+
 			}
 
 			if (json['shipping_method']) {

@@ -175,6 +175,12 @@ class ControllerCheckoutShippingAddress extends Controller {
 				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '' || !is_numeric($this->request->post['zone_id'])) {
 					$json['error']['zone'] = $this->language->get('error_zone');
 				}
+				//frd
+				if ($this->request->post['country_id'] == 100) {
+					if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+						$json['error']['district'] = $this->language->get('error_district');
+					}
+				}
 
 				// Custom field validation
 				$this->load->model('account/custom_field');

@@ -370,7 +370,6 @@ class ControllerAccountAddress extends Controller {
 		} else {
 			$data['error_country'] = '';
 		}
-
 		if (isset($this->error['zone'])) {
 			$data['error_zone'] = $this->error['zone'];
 		} else {
@@ -545,6 +544,13 @@ class ControllerAccountAddress extends Controller {
 		if ($this->request->post['country_id'] == '' || !is_numeric($this->request->post['country_id'])) {
 			$this->error['country'] = $this->language->get('error_country');
 		}
+		//frd
+		if ($this->request->post['country_id'] == 100) {
+			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
+				$this->error['district'] = $this->language->get('error_district');
+			}
+		}
+		//------
 
 		if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '' || !is_numeric($this->request->post['zone_id'])) {
 			$this->error['zone'] = $this->language->get('error_zone');

@@ -198,8 +198,8 @@
         </select>
       </div>
       <!--frd-->
-      <div class="form-group required">
-        <label class="control-label" for="input-payment-zone"><?php echo $entry_district; ?></label>
+      <div class="form-group">
+        <label class="control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
         <select name="district_id" id="input-payment-district" class="form-control">
         </select>
         <!--<?php if ($error_district) { ?>

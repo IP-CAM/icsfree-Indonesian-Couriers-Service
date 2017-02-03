@@ -65,6 +65,23 @@ class ControllerExtensionShippingShindo extends Controller {
 			$data['error_warning'] = '';
 		}
 
+		if (isset($this->error['apikey'])) {
+			$data['error_apikey'] = $this->error['apikey'];
+		} else {
+			$data['error_apikey'] = '';
+		}
+		if (isset($this->error['province_id'])) {
+			$data['error_province_id'] = $this->error['province_id'];
+		} else {
+			$data['error_province_id'] = '';
+		}
+		
+		if (isset($this->error['city_id'])) {
+			$data['error_city_id'] = $this->error['city_id'];
+		} else {
+			$data['error_city_id'] = '';
+		}
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -240,6 +257,17 @@ class ControllerExtensionShippingShindo extends Controller {
 	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'extension/shipping/shindo')) {
 			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		if (!$this->request->post['shindo_apikey']) {
+			$this->error['apikey'] = $this->language->get('error_apikey');
+		}
+		if (!$this->request->post['shindo_city_id']) {
+			$this->error['city_id'] = $this->language->get('error_city_id');
+		}
+
+		if (!$this->request->post['shindo_province_id']) {
+			$this->error['province_id'] = $this->language->get('error_province_id');
 		}
 
 		return !$this->error;
